@@ -24,11 +24,4 @@
 		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>Makefile</name>
-			<type>1</type>
-			<location>C:/Users/Aleksandr/Documents/projects/repos/circular-buffer/program/basicBufferApplication/Makefile</location>
-		</link>
-	</linkedResources>
 </projectDescription>

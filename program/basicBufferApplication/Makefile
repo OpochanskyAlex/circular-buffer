@@ -1,10 +1,13 @@
 PROJECT_ROOT = $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 
-EXECUTABLE = basicBufferApplication
+PROJECT_NAME = basicBufferApplication
+
 BUILD_DIR = build
+EXECUTABLE = $(BUILD_DIR)/$(PROJECT_NAME)
 INCDIR += $(PROJECT_ROOT)/src
 
 SOURCES += src/main.cpp
+
 
 ifeq ($(BUILD_MODE),debug)
 	CFLAGS += -g
@@ -14,18 +17,22 @@ else
 	$(error Build mode $(BUILD_MODE) not supported by this Makefile)
 endif
 
-#OBJECTS = $(addprefix $(BUILD_DIR)/,$(notdir $(SOURCES:.cpp=.o)))
-OBJECTS=$(SOURCES:.cpp=.o)
-#$(error $(SOURCES) SOURCES)
+OBJECTS = $(addprefix $(BUILD_DIR)/,$(notdir $(SOURCES:.cpp=.o)))
+#OBJECTS=$(SOURCES:.cpp=.o)
+#$(error $(OBJECTS) OBJECTS)
 
-all: $(SOURCES) $(EXECUTABLE)
+all: directories $(EXECUTABLE).exe
+	
+directories: ${BUILD_DIR}
 
-$(EXECUTABLE): $(OBJECTS) 
-	$(CXX) $(LDFLAGS) $(OBJECTS) -o $@
+${BUILD_DIR}:
+	mkdir -p $@
 	
-.cpp.o:
-	$(CXX) $(CFLAGS) $< -o $@
+$(EXECUTABLE).exe: $(OBJECTS) 
+	$(CXX) $(CFLAGS) $(OBJECTS) -o $@
 	
+$(OBJECTS): $(SOURCES)
+	$(CXX) -c $< -o $@ $(CFLAGS)
 	
 clean:
 	rm -fr $(BUILD_DIR)
