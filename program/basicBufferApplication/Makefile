@@ -4,9 +4,12 @@ PROJECT_NAME = basicBufferApplication
 
 BUILD_DIR = build
 EXECUTABLE = $(BUILD_DIR)/$(PROJECT_NAME)
-INCDIR += $(PROJECT_ROOT)/src
+
+#INCDIR += $(PROJECT_ROOT)/src
+#INCDIR += $(PROJECT_ROOT)/../../libs
 
 SOURCES += src/main.cpp
+SOURCES += $(PROJECT_ROOT)/../../libs/CircularBuffer.cpp
 
 
 ifeq ($(BUILD_MODE),debug)
@@ -30,9 +33,9 @@ ${BUILD_DIR}:
 	
 $(EXECUTABLE).exe: $(OBJECTS) 
 	$(CXX) $(CFLAGS) $(OBJECTS) -o $@
-	
+
 $(OBJECTS): $(SOURCES)
-	$(CXX) -c $< -o $@ $(CFLAGS)
-	
+	$(CXX) -c $< -o $@ $(CFLAGS) 
+#-I $(INCDIR)
 clean:
 	rm -fr $(BUILD_DIR)

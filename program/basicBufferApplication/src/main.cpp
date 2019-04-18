@@ -7,7 +7,14 @@
 //============================================================================
 
 #include <iostream>
+//#include "CircularBuffer.h"
 using namespace std;
+
+class CircularBuffer {
+public:
+	CircularBuffer();
+	virtual ~CircularBuffer();
+};
 
 int main() {
 	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!

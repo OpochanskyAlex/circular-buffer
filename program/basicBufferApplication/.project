@@ -26,6 +26,11 @@
 	</natures>
 	<linkedResources>
 		<link>
+			<name>libs</name>
+			<type>2</type>
+			<locationURI>PARENT-2-PROJECT_LOC/libs</locationURI>
+		</link>
+		<link>
 			<name>makefile</name>
 			<type>1</type>
 			<location>C:/Users/Aleksandr/Documents/projects/repos/circular-buffer/program/basicBufferApplication/makefile</location>
