@@ -5,15 +5,16 @@ PROJECT_NAME = basicBufferApplication
 BUILD_DIR = build
 EXECUTABLE = $(BUILD_DIR)/$(PROJECT_NAME)
 
-#INCDIR += $(PROJECT_ROOT)/src
-#INCDIR += $(PROJECT_ROOT)/../../libs
+INCDIR += src/
+INCDIR += ../../libs/
 
 SOURCES += src/main.cpp
-SOURCES += $(PROJECT_ROOT)/../../libs/CircularBuffer.cpp
+SOURCES += ../../libs/CircularBuffer.cpp
 
-
+DEFINES += -DDEBUG_COUT_INFO
 ifeq ($(BUILD_MODE),debug)
-	CFLAGS += -g
+	CFLAGS += -g 
+	CFLAGS += $(DEFINES)
 else ifeq ($(BUILD_MODE),run)
 	CFLAGS += -O2
 else
@@ -21,8 +22,8 @@ else
 endif
 
 OBJECTS = $(addprefix $(BUILD_DIR)/,$(notdir $(SOURCES:.cpp=.o)))
-#OBJECTS=$(SOURCES:.cpp=.o)
-#$(error $(OBJECTS) OBJECTS)
+
+VPATH = build:src:../../libs
 
 all: directories $(EXECUTABLE).exe
 	
@@ -31,11 +32,11 @@ directories: ${BUILD_DIR}
 ${BUILD_DIR}:
 	mkdir -p $@
 	
-$(EXECUTABLE).exe: $(OBJECTS) 
-	$(CXX) $(CFLAGS) $(OBJECTS) -o $@
+$(EXECUTABLE).exe: $(OBJECTS)
+	$(CXX) -o $@ $(CFLAGS) $(OBJECTS) $(addprefix -I ,$(INCDIR))
 
-$(OBJECTS): $(SOURCES)
-	$(CXX) -c $< -o $@ $(CFLAGS) 
-#-I $(INCDIR)
+$(BUILD_DIR)/%.o: %.cpp
+	$(CXX) -o $@ -c $< $(CFLAGS) $(addprefix -I ,$(INCDIR)) 
+	
 clean:
 	rm -fr $(BUILD_DIR)
