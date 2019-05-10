@@ -20,7 +20,7 @@ CircularBuffer::CircularBuffer(uint16_t size) {
 }
 
 
-bool CircularBuffer::writeElement(int  * element){
+bool CircularBuffer::pushElement(int  * element){
 	bool success = false;
 	if(isFull()){
 		return false;
@@ -34,7 +34,8 @@ bool CircularBuffer::writeElement(int  * element){
 	success = true;
 	return success;
 }
-bool CircularBuffer::readElement(int  * element){
+
+bool CircularBuffer::popElement(int  * element){
 	bool success = false;
 	if(isEmpty()){
 		return false;
@@ -47,6 +48,12 @@ bool CircularBuffer::readElement(int  * element){
 	return success;
 }
 
+bool CircularBuffer::readElement(int * element, uint16_t elementOffset){
+	bool success = false;
+	//TODO add checks
+	*element =   mainBufferArray[readPointer + elementOffset];
+	return success;
+}
 bool CircularBuffer::isFull(){
 	return occupancy() == (bufferSize - 1);
 }

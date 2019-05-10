@@ -18,8 +18,9 @@ public:
 	uint16_t readPointer;
 	uint16_t writePointer;
 	CircularBuffer(uint16_t size);
-	bool writeElement(int * element);
-	bool readElement(int * element);
+	bool pushElement(int * element);
+	bool popElement(int * element);
+	bool readElement(int * element, uint16_t elementOffset);
 	bool isFull();
 	bool isEmpty();
 	uint16_t occupancy();
