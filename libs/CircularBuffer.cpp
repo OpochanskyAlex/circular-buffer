@@ -20,36 +20,34 @@ CircularBuffer::CircularBuffer(uint16_t size) {
 }
 
 
-bool CircularBuffer::pushElement(int  * element){
-	bool success = false;
+CircularBuffer::SuccessStatus CircularBuffer::pushElement(int  * element){
+	SuccessStatus success = UNKNOWNERROR;
 	if(isFull()){
-		return false;
+		return OVERFLOW;
 	}
 	mainBufferArray[writePointer] = *element;
 	if (++writePointer >= bufferSize){
 		writePointer = 0;
 	}
-
-	//*writePointer = *element; // pointer construction
-	success = true;
+	success = OK;
 	return success;
 }
 
-bool CircularBuffer::popElement(int  * element){
-	bool success = false;
+CircularBuffer::SuccessStatus CircularBuffer::popElement(int  * element){
+	SuccessStatus success = UNKNOWNERROR;
 	if(isEmpty()){
-		return false;
+		return EMPTY;
 	}
 	*element = mainBufferArray[readPointer];
 	if (++readPointer >= bufferSize){
 		readPointer = 0;
 	}
-	success = true;
+	success = OK;
 	return success;
 }
 
-bool CircularBuffer::readElement(int * element, uint16_t elementOffset){
-	bool success = false;
+CircularBuffer::SuccessStatus CircularBuffer::readElement(int * element, uint16_t elementOffset){
+	SuccessStatus success = UNKNOWNERROR;
 	//TODO add checks
 	*element =   mainBufferArray[readPointer + elementOffset];
 	return success;
@@ -60,6 +58,7 @@ bool CircularBuffer::isFull(){
 bool CircularBuffer::isEmpty(){
 	return (readPointer == writePointer);
 }
+
 uint16_t CircularBuffer::occupancy(){
 	//TODO test it is it really safe and optimal?
 	uint16_t result;
@@ -76,4 +75,5 @@ uint16_t CircularBuffer::occupancy(){
 CircularBuffer::~CircularBuffer() {
 	// TODO Auto-generated destructor stub
 }
+
 

@@ -13,14 +13,22 @@ using namespace std;
 
 class CircularBuffer {
 public:
+	enum SuccessStatus{
+		OK = 0,
+		UNKNOWNERROR = 1,
+		OVERFLOW = 2,
+		EMPTY = 3,
+		OUTOFRANGE = 4,
+		OUTOFTYPE = 5
+	};
 	uint16_t bufferSize = 0;
 	int * mainBufferArray;
 	uint16_t readPointer;
 	uint16_t writePointer;
 	CircularBuffer(uint16_t size);
-	bool pushElement(int * element);
-	bool popElement(int * element);
-	bool readElement(int * element, uint16_t elementOffset);
+	SuccessStatus pushElement(int * element);
+	SuccessStatus popElement(int * element);
+	SuccessStatus readElement(int * element, uint16_t elementOffset);
 	bool isFull();
 	bool isEmpty();
 	uint16_t occupancy();
