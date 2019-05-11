@@ -7,6 +7,15 @@
 
 #include "CircularBuffer.h"
 
+inline bool IsOutOfType(uint16_t readingPosinion, uint16_t readPointer, uint16_t elementOffset){
+	if (( readingPosinion < readPointer) && (readingPosinion < elementOffset)){
+		return true;
+	}
+	else{
+		return false;
+	}
+}
+
 CircularBuffer::CircularBuffer(uint16_t size) {
 	bufferSize = size;
 	mainBufferArray = new int[bufferSize];
@@ -18,7 +27,6 @@ CircularBuffer::CircularBuffer(uint16_t size) {
 #endif
 
 }
-
 
 CircularBuffer::SuccessStatus CircularBuffer::pushElement(int  * element){
 	SuccessStatus success = UNKNOWNERROR;
@@ -48,10 +56,18 @@ CircularBuffer::SuccessStatus CircularBuffer::popElement(int  * element){
 
 CircularBuffer::SuccessStatus CircularBuffer::readElement(int * element, uint16_t elementOffset){
 	SuccessStatus success = UNKNOWNERROR;
-	//TODO add checks
-	*element =   mainBufferArray[readPointer + elementOffset];
+	uint16_t readingPosinion = readPointer + elementOffset;
+	//TODO add ability to step over OUTOFTYPE
+	if ( IsOutOfType(readingPosinion, readPointer, elementOffset)){
+		return OUTOFTYPE;
+	}
+	if (elementOffset > bufferSize){
+		return OUTOFRANGE;
+	}
+	*element =   mainBufferArray[(readPointer + elementOffset) % bufferSize];
 	return success;
 }
+
 bool CircularBuffer::isFull(){
 	return occupancy() == (bufferSize - 1);
 }

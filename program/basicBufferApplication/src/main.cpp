@@ -35,6 +35,8 @@ int main() {
 	}
 	cout << " pop 50 elements______________" << endl;
 
+	MyBuffer.readElement(&element,10);
+	cout << " read +10 " << element << " " <<  endl;
 	//write 50 elements and try to write another 50
 	for (int i=0; i<100; ++i){
 		element = i+100;
