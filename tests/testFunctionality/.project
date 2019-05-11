@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>basicBufferApplication</name>
+	<name>testFunctionality</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -26,14 +26,19 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>libs</name>
-			<type>2</type>
-			<locationURI>PARENT-2-PROJECT_LOC/libs</locationURI>
+			<name>Makefile</name>
+			<type>1</type>
+			<location>C:/Users/Aleksandr/Documents/projects/repos/circular-buffer/tests/testFunctionality/Makefile</location>
 		</link>
 		<link>
-			<name>src/main.cpp</name>
+			<name>libs</name>
+			<type>2</type>
+			<location>C:/Users/Aleksandr/Documents/projects/repos/circular-buffer/libs</location>
+		</link>
+		<link>
+			<name>gtest/gtest-all.cc</name>
 			<type>1</type>
-			<location>C:/Users/Aleksandr/Documents/projects/repos/circular-buffer/program/basicBufferApplication/src/main.cpp</location>
+			<location>C:/Users/Aleksandr/Documents/projects/repos/circular-buffer/tests/testFunctionality/gtest/gtest-all.cc</location>
 		</link>
 	</linkedResources>
 </projectDescription>

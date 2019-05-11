@@ -1,0 +1,4 @@
+/Debug/
+/build/
+/*.exe
+gdb.exe.stackdump
