@@ -12,8 +12,6 @@ using namespace std;
 
 #define BUFFERSIZE 101U
 
-//hehe I have tried to amend commit, which was already pushed
-
 int main() {
 	uint32_t myVar;
 	int element;
