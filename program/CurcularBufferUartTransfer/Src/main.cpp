@@ -16,6 +16,7 @@
   *
   ******************************************************************************
   */
+#define BUFFERSIZE 101U
 /* USER CODE END Header */
 
 /* Includes ------------------------------------------------------------------*/
@@ -25,7 +26,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "CircularBuffer.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -90,7 +91,7 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-
+  CircularBuffer MyBuffer(BUFFERSIZE);
   /* USER CODE END 2 */
 
   /* Infinite loop */

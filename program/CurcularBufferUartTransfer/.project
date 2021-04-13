@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
 	<name>CurcularBufferUartTransfer</name>
-	<comment />
+	<comment></comment>
 	<projects>
 	</projects>
 	<buildSpec>
@@ -15,7 +15,7 @@
 				</dictionary>
 				<dictionary>
 					<key>?name?</key>
-					<value />
+					<value></value>
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.append_environment</key>
@@ -23,7 +23,7 @@
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.buildArguments</key>
-					<value />
+					<value></value>
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.buildCommand</key>
@@ -67,10 +67,21 @@
 	</buildSpec>
 	<natures>
 		<nature>org.eclipse.cdt.core.cnature</nature>
+		<nature>org.eclipse.cdt.core.ccnature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 	</natures>
 	<linkedResources>
-		
+		<link>
+			<name>circularBefferLib</name>
+			<type>2</type>
+			<locationURI>circularBefferLib</locationURI>
+		</link>
 	</linkedResources>
+	<variableList>
+		<variable>
+			<name>circularBefferLib</name>
+			<value>$%7BPARENT-2-PROJECT_LOC%7D/libs</value>
+		</variable>
+	</variableList>
 </projectDescription>
